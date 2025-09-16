@@ -18,10 +18,10 @@ This README explains how to **install**, **activate**, and **test** a full MoSDe
 
 ## 2) Get the installer
 
-Save your script as `mosdef.sh` and make it executable:
+Save your script as `install-mosdef-cp2k.sh` and make it executable:
 
 ```bash
-chmod +x mosdef.sh
+chmod +x install-mosdef-cp2k.sh
 ```
 
 Optionally choose a local conda prefix (default is `~/miniforge3`):
@@ -35,7 +35,7 @@ export CONDA_HOME="$HOME/miniforge3"
 ## 3) Quick install (CPU-only)
 
 ```bash
-./mosdef.sh
+./install-mosdef-cp2k.sh
 ```
 
 What it does:
@@ -52,32 +52,32 @@ What it does:
 
 ## 4) Optional flags
 
-Toggle via env vars **before** running `mosdef.sh`:
+Toggle via env vars **before** running `install-mosdef-cp2k.sh`:
 
 * **Engines**
   Skip LAMMPS/HOOMD/GROMACS:
 
   ```bash
-  INSTALL_ENGINES=false ./mosdef.sh
+  INSTALL_ENGINES=false ./install-mosdef-cp2k.sh
   ```
 
 * **CUDA** (toolkit only; engine GPU builds are not configured here)
 
   ```bash
-  ENABLE_CUDA=true CUDA_VERSION=12.4 ./mosdef.sh
+  ENABLE_CUDA=true CUDA_VERSION=12.4 ./install-mosdef-cp2k.sh
   ```
 
 * **Conda prefix**
 
   ```bash
-  CONDA_HOME="$HOME/miniforge3" ./mosdef.sh
+  CONDA_HOME="$HOME/miniforge3" ./install-mosdef-cp2k.sh
   ```
 
 * **Don’t modify your shell startup files**
   (skip `conda init`; use the activator script instead)
 
   ```bash
-  INIT_SHELL=false ./mosdef.sh
+  INIT_SHELL=false ./install-mosdef-cp2k.sh
   ```
 
 ---
@@ -332,7 +332,7 @@ PY
 
   ```bash
   sudo rm -rf /root/miniforge3   # optional cleanup
-  CONDA_HOME="$HOME/miniforge3" ./mosdef.sh
+  CONDA_HOME="$HOME/miniforge3" ./install-mosdef-cp2k.sh
   ```
 
 * **CP2K aborts reading `BASIS_MOLOPT`/`POTENTIAL`**
@@ -347,7 +347,7 @@ PY
   The script retries sequentially with pins and `MAMBA_NUM_THREADS=1`. If it still fails, re-run with:
 
   ```bash
-  INSTALL_ENGINES=false ./mosdef.sh
+  INSTALL_ENGINES=false ./install-mosdef-cp2k.sh
   # later: conda activate mosdef-env && mamba install -c conda-forge lammps hoomd gromacs
   ```
 
@@ -370,7 +370,7 @@ rm -rf "$HOME/miniforge3"
 
 ```bash
 # Install
-./mosdef.sh
+./install-mosdef-cp2k.sh
 
 # Activate now
 ~/miniforge3/envs/mosdef-env/activate.sh
